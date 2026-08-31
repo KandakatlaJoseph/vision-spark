@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --vs-navy: #01155C;
+  --vs-blue: #0054FF;
+  --vs-orange: #FC5302;
+  --vs-bg-light: #FFFFFF;
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #0F172A;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0054FF;
+}
+
+/* Signature Spark Mark Icon */
+.spark-mark {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(135deg, #FC5302 0%, #FF7B00 100%);
+  clip-path: polygon(45% 0%, 100% 0%, 40% 55%, 70% 55%, 20% 100%, 30% 45%, 0% 45%);
+}
+
+/* Button Classes */
+.btn-primary {
+  background: linear-gradient(135deg, #FC5302 0%, #FF7B00 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 20px -2px rgba(252, 83, 2, 0.35);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(252, 83, 2, 0.5);
+  filter: brightness(1.05);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #0054FF 0%, #01155C 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 20px -2px rgba(0, 84, 255, 0.35);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(0, 84, 255, 0.5);
+  filter: brightness(1.08);
+}
+
+.btn-outline {
+  border: 1px solid #CBD5E1;
+  color: #01155C;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+  background: #FFFFFF;
+}
+.btn-outline:hover {
+  border-color: #0054FF;
+  color: #0054FF;
+  box-shadow: 0 4px 15px -2px rgba(0, 84, 255, 0.15);
+  background: rgba(0, 84, 255, 0.04);
+}
+
+/* Light Theme Cards */
+.card-light {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px -4px rgba(1, 21, 92, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-light:hover {
+  border-color: rgba(0, 84, 255, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -10px rgba(1, 21, 92, 0.12), 0 0 15px -3px rgba(0, 84, 255, 0.1);
+}
+
+/* Gradient Text Effect */
+.gradient-text-brand {
+  background: linear-gradient(135deg, #01155C 0%, #0054FF 60%, #FC5302 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-text-orange {
+  background: linear-gradient(135deg, #FC5302 0%, #FF7B00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}/* ============================================================
+   MARQUEE RIBBON STRIP
+   ============================================================ */
+@keyframes marquee-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.ribbon-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 28s linear infinite;
+}
+.ribbon-track-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-right 32s linear infinite;
+}
+.ribbon-track:hover,
+.ribbon-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+   ACCORDION PANEL (Choose Your Path)
+   ============================================================ */
+.path-panel {
+  flex: 0 0 72px;
+  cursor: pointer;
+  transition: flex 0.65s cubic-bezier(0.77, 0, 0.18, 1);
+  overflow: hidden;
+  border-radius: 20px;
+  position: relative;
+}
+.path-panel.is-open {
+  flex: 1 1 0%;
+}
+.path-panel .panel-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  translate: -50% 0;
+  transition: opacity 0.3s;
+}
+.path-panel.is-open .panel-label {
+  opacity: 0;
+  pointer-events: none;
+}
+.path-panel .panel-content {
+  opacity: 0;
+  transition: opacity 0.4s 0.25s;
+  pointer-events: none;
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 28px 32px;
+}
+.path-panel.is-open .panel-content {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Fade-in animation utility */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
